@@ -9,6 +9,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   padding-top: 4rem;
+
+  box-shadow: -20px -140px 90px -70px rgba(50,148,248,0.1) inset;
   
   .effects {
     margin-top: -4rem;
