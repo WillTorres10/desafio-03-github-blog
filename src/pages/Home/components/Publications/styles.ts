@@ -7,6 +7,15 @@ export const PublicationsContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   padding-bottom: 2rem;
+  
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => theme['base-title']};
+    &:hover, &:focus {
+      text-decoration: none;
+      border-bottom-color: transparent;
+    }
+  }
 `;
 
 export const PublicationCard = styled(Card)`

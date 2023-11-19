@@ -3,6 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR';
 
 import {PublicationCard, PublicationNotFound, PublicationsContainer, PublicationTitle} from "./styles.ts";
 import {IssueItems} from "../../../../repository/github.com";
+import {NavLink} from "react-router-dom";
 
 interface PublicationProps {
     publications: IssueItems
@@ -28,13 +29,15 @@ export function Publications({publications}: PublicationProps) {
     return (
         <PublicationsContainer>
             {publications.map(publication => (
-                <PublicationCard>
-                    <PublicationTitle>
-                        <h1>{publication.title}</h1>
-                        <span>{formatDate(publication.created_at)}</span>
-                    </PublicationTitle>
-                    <p>{publication.body}</p>
-                </PublicationCard>
+                <NavLink to={`/issue/${publication.id}/detail`} key={publication.id}>
+                    <PublicationCard>
+                        <PublicationTitle>
+                            <h1>{publication.title}</h1>
+                            <span>{formatDate(publication.created_at)}</span>
+                        </PublicationTitle>
+                        <p>{publication.body}</p>
+                    </PublicationCard>
+                </NavLink>
             ))}
         </PublicationsContainer>
     )
