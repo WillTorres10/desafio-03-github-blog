@@ -1,3 +1,4 @@
 export default {
-    githubUser: "WillTorres10"
+    githubUser: "rocketseat-education",
+    repositoryName: "reactjs-github-blog-challenge"
 }

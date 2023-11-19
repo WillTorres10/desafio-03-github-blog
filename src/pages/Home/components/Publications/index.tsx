@@ -1,52 +1,33 @@
-import {PublicationCard, PublicationsContainer, PublicationTitle} from "./styles.ts";
+import {PublicationCard, PublicationNotFound, PublicationsContainer, PublicationTitle} from "./styles.ts";
+import {IssueItems} from "../../../../repository/github.com";
 
-export function Publications(){
+interface PublicationProps {
+    publications: IssueItems
+}
+
+export function Publications({publications}: PublicationProps) {
+    if (publications.length === 0) {
+        return (
+            <PublicationNotFound>
+                <h1>Nada Encontrado</h1>
+            </PublicationNotFound>
+        );
+    }
     return (
         <PublicationsContainer>
-            <PublicationCard>
-                <PublicationTitle>
-                    <h1>JavaScript data types and data structures</h1>
-                    <span>
+            {publications.map(publication => (
+                <PublicationCard>
+                    <PublicationTitle>
+                        <h1>{publication.title}</h1>
+                        <span>
                         Há 1 dia
                     </span>
-                </PublicationTitle>
-                <p>
-                    Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...
-                </p>
-            </PublicationCard>
-            <PublicationCard>
-                <PublicationTitle>
-                    <h1>JavaScript data types and data structures</h1>
-                    <span>
-                        Há 1 dia
-                    </span>
-                </PublicationTitle>
-                <p>
-                    Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...
-                </p>
-            </PublicationCard>
-            <PublicationCard>
-                <PublicationTitle>
-                    <h1>JavaScript data types and data structures</h1>
-                    <span>
-                        Há 1 dia
-                    </span>
-                </PublicationTitle>
-                <p>
-                    Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...
-                </p>
-            </PublicationCard>
-            <PublicationCard>
-                <PublicationTitle>
-                    <h1>JavaScript data types and data structures</h1>
-                    <span>
-                        Há 1 dia
-                    </span>
-                </PublicationTitle>
-                <p>
-                    Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...
-                </p>
-            </PublicationCard>
+                    </PublicationTitle>
+                    <p>
+                        {publication.body}
+                    </p>
+                </PublicationCard>
+            ))}
         </PublicationsContainer>
     )
 }
