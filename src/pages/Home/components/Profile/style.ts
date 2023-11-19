@@ -6,12 +6,17 @@ export const ProfileCard = styled(Card)`
   
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 2rem;
   
   img {
     width: 9.25rem;
     height: 9.25rem;
     border-radius: 8px;
+  }
+  
+  & > div {
+    width: 100%;
   }
   
   p {
@@ -26,14 +31,17 @@ export const ProfileCardTitle = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 0.5rem;
+  
+  a {
+    text-decoration: none;
+  }
 `;
 
 export const ProfileIconsGroup = styled.div`
   display: flex;
-  flex-direction: row;
   gap: 2rem;
   margin-top: 1.5rem;
-  
+  width: 100% !important;
 `;
 
 export const ProfileIcons = styled.div`

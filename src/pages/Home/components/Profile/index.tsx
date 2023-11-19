@@ -2,31 +2,40 @@ import {ProfileCard, ProfileCardTitle, ProfileIcons, ProfileIconsGroup} from "./
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBuilding, faUserGroup, faArrowUpRightFromSquare} from "@fortawesome/free-solid-svg-icons";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
+import {requestUserProfile, UserProfileResponseType} from "../../../../repository/github.com";
+import {useEffect, useState} from "react";
 
 export function Profile() {
+
+    const [userProfileData, setUserProfileData] = useState<UserProfileResponseType>({} as UserProfileResponseType);
+
+    useEffect(() => {
+        requestUserProfile().then(({data}) => setUserProfileData(data));
+    }, []);
+
     return (
         <ProfileCard>
-            <img src="https://github.com/WillTorres10.png" className="effects" alt=""/>
+            <img src={userProfileData.avatar_url} className="effects" alt=""/>
             <div>
                 <ProfileCardTitle>
-                    <h1>Cameron Williamson</h1>
-                    <a>GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>
+                    <h1>{userProfileData.name}</h1>
+                    <a href={userProfileData.html_url} target="_blank">GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a>
                 </ProfileCardTitle>
                 <p>
-                    Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
+                    {userProfileData.bio}
                 </p>
                 <ProfileIconsGroup>
                     <ProfileIcons>
                         <FontAwesomeIcon icon={faGithub} />
-                        cameronwll
+                        {userProfileData.login}
                     </ProfileIcons>
                     <ProfileIcons>
                         <FontAwesomeIcon icon={faBuilding} />
-                        Rocketseat
+                        {userProfileData.company ?? 'Não Informado'}
                     </ProfileIcons>
                     <ProfileIcons>
                         <FontAwesomeIcon icon={faUserGroup} />
-                        32 seguidores
+                        {userProfileData.followers} seguidores
                     </ProfileIcons>
                 </ProfileIconsGroup>
             </div>
