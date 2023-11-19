@@ -60,6 +60,7 @@ export const PublicationTitle = styled.div`
   
   span {
     white-space: nowrap;
+    text-transform: capitalize;
     
     color: ${({ theme }) => theme['base-span']};
     font-size: 0.875rem;
