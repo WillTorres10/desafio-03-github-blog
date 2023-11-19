@@ -29,7 +29,7 @@ export function Publications({publications}: PublicationProps) {
     return (
         <PublicationsContainer>
             {publications.map(publication => (
-                <NavLink to={`/issue/${publication.id}/detail`} key={publication.id}>
+                <NavLink to={`/issue/${publication.number}/detail`} key={publication.id}>
                     <PublicationCard>
                         <PublicationTitle>
                             <h1>{publication.title}</h1>
