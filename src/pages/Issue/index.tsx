@@ -1,5 +1,6 @@
 import {Header} from "../../components/Header";
 import {Container} from "../../components/ContentContainer";
+import {Title} from "./components/Title";
 
 
 export function  Issue(){
@@ -7,7 +8,7 @@ export function  Issue(){
         <>
             <Header />
             <Container>
-                <h1>a</h1>
+                <Title></Title>
             </Container>
         </>
     )

@@ -2,5 +2,5 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 54rem;
-  margin: -3rem auto;
+  margin: -5.5rem auto;
 `
